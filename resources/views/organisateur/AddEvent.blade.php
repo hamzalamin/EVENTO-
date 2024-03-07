@@ -1,5 +1,5 @@
-<x-Organisateur-layout>
-    <style>
+@include('BaseCopy')
+@include('NavBar')    <style>
         .login-contect {
             background-color: #f8f9fa;
         }
@@ -20,11 +20,11 @@
             font-size: 24px;
         }
 
-        form {
+        /* form {
             padding: 20px;
             border: 2px solid #00bce4;
             border-radius: 10px;
-        }
+        } */
 
         input[type="text"],
         input[type="date"],
@@ -107,8 +107,10 @@
                             <input type="number" id="places_available" name="places_available" class="mt-3" required min="1">
                         </div>
                         <div class="form-group">
+                            <label for="places_available">Setengs:</label>
+
                             <select id="states" name="states" class="mt-3" required>
-                                <option value="">Chose category</option>
+                                <option value="">Chose Setengs</option>
                                 <option value="auto">auto</option>
                                 <option value="manuelle">manuelle</option>
                             </select>
@@ -122,4 +124,5 @@
             </div>
         </div>
     </div>
-</x-Organisateur-layout>
+    <div style="margin: 10%"></div>
+@include('footer')

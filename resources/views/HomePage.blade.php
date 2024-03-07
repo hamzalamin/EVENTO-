@@ -115,7 +115,7 @@
 </div>
 <!-- //services -->
 <!-- gallery -->
-<div id="gallery" class="gallery">
+{{-- <div id="gallery" class="gallery">
     <div class="container">
         <h3 class="w3ls-tittle">Events</h3>
         <div class="container mt-4">
@@ -141,19 +141,19 @@
                     <img src="{{ asset('helps/images/g1.jpg') }}" alt="{{ $event->title }}" />
                     
                     <div class="w3lmask">
-                        <h4> @if($event->places_available == $event->reservations()->count())
+                        <h4>
+                            @if($event->places_available <= $event->reservations()->where('event_id', $event->id)->count())
                             <button type="button" class="btn btn-success">Reservation Complete</button>
                             @else
-                            <form action="{{ route('reservations.store') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="event_id" value="{{ $event->id }}">
-                           
-                            <!-- Display reservation button -->
-                            {{-- <form action="{{ route('reserve.event', $event->id) }}" method="POST">
-                                @csrf --}}
-                                <button type="submit" class="btn btn-primary">Reserve Event</button>
-                            {{-- </form> --}}
-                            @endif                            
+                                <form action="{{ route('reservations.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="event_id" value="{{ $event->id }}">
+                                    <button type="submit" class="btn btn-primary">Reserve Event</button>
+                                </form>
+                            @endif
+                        
+                        </h4>
+                                  
                         <p>{{ $message }}</p>
 
                         </form>
@@ -162,8 +162,6 @@
                         <p>{{ $event->date }}</p>
                         <p>{{ $event->location }}</p>
                         <p>{{ $event->places_available }}</p>
-
-
                     </div>
 
                 
@@ -181,6 +179,6 @@
         });
         </script> 
     </div>
-</div>
+</div> --}}
 
 @include('footer')

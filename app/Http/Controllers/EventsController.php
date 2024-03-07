@@ -139,9 +139,9 @@ public function events(Request $request, events $event, reservation $reservation
         //     $message = 'Available seats: ' . $availableSeats;
         // }
         $message ='';
-        $events = events::all();
+        $events = events::paginate(3);
         $categories = categories::all(); 
-        return view('HomePage', compact('events', 'categories', 'message'));
+        return view('eventsofall', compact('events', 'categories', 'message'));
     }
 
 
@@ -164,8 +164,8 @@ public function search(Request $request)
         $message = '';
         $categories = categories::all();
 
-        $events = $query->get();
-        return view('HomePage', compact('events','categories', 'message'));
+        $events = $query->paginate(3);
+        return view('eventsofall', compact('events','categories', 'message'));
     }
 
 

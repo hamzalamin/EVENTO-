@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Models\events;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventsController;
@@ -20,7 +21,7 @@ use App\Http\Controllers\ReservationController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -47,6 +48,11 @@ Route::middleware('auth', 'role:Admin')->group(function () {
     Route::delete('/categories/{id}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
     Route::get('/categories/{id}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{id}', [CategoriesController::class, 'update'])->name('categories.update');
+    Route::get('/users', [adminController::class, 'index'])->name('users.index');
+    Route::delete('/users/{user}', [adminController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users/{user}', [adminController::class, 'restore']);
+
+
 
 });
 
@@ -68,7 +74,7 @@ Route::middleware('auth', 'role:User')->group(function () {
 
 });
 
-Route::get('/', [EventsController::class, 'events'])->name('events.index');
+Route::get('/events', [EventsController::class, 'events'])->name('events.index');
 Route::get('/events/search', [EventsController::class, 'search'])->name('search');
 
 Route::middleware('auth')->group(function () {

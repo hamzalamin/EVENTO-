@@ -19,9 +19,9 @@
                     <x-nav-link :href="route('Admin')" :active="request()->routeIs('Admin')">
                         {{ __('Admin') }}
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('Categories')" :active="request()->routeIs('Categories')">
-                        {{ __('Categories') }}
-                    </x-nav-link> --}}
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        {{ __('Gestion Of users') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('all-categories')" :active="request()->routeIs('all-categories')">
                         {{ __('All categories') }}
                     </x-nav-link>

@@ -19,7 +19,7 @@ class events extends Model
 // }
 public function reservations()
 {
-    return $this->hasMany(Reservation::class, 'event_id');
+    return $this->hasMany(reservation::class, 'event_id');
 }
 
     protected $fillable = [

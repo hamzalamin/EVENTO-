@@ -426,25 +426,25 @@ ul.callbacks_tabs.callbacks2_tabs {
 	position:relative;
 }
 .agileits-logo {
-    z-index: 9999;
+    z-index: 999;
     position: absolute;
-    top: 15%;
+    top: 20%;
     left: 44%;
 }
 .agileits-logo a{
 	text-decoration:none;
-	color:#ff322e;
-	font-size:60px;
+	color:#00bce4;;
+	font-size:40px;
 	font-family: 'Niconne', cursive;
 	position: relative;
 } 
 .agileits-logo a span {
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
-    font-size: .28em;
+    font-size: .5em;
     position: absolute;
     right: 0;
-    top: 14px;
+    top: 20px;
     letter-spacing: 13px;
     color: #00bce4;
 }
@@ -452,7 +452,7 @@ ul.callbacks_tabs.callbacks2_tabs {
     content: '';
     position: absolute;
     left: -11%;
-    bottom: -50px;
+    /* bottom: -50px; */
     border-left: 104px solid rgba(0, 0, 0, 0);
     border-right: 104px solid rgba(0, 0, 0, 0);
     border-top: 48px solid #fff;
@@ -1826,3 +1826,15 @@ h2.w3ls-tittle:after, h2.w3ls-tittle:before {
 		font-size: 16px;
 	}
 }
+
+
+
+/* new style */
+/* new style */
+/* new style */
+/* new style */
+/* new style */
+/* new style */
+/* new style */
+
+

@@ -1,5 +1,5 @@
-<x-Organisateur-layout>
-    @include('BaseCopy')
+@include('BaseCopy')
+@include('NavBar')    
     <style>
         /* Custom border style for the cards */
         .col {
@@ -71,4 +71,3 @@
        
         <div class="clearfix"></div>
     </div>
-</x-Organisateur-layout>
