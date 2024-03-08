@@ -93,12 +93,15 @@
 					<!-- </div> -->
 					<div class="col-md-4 widget states-mdl">
 						<div class="stats-left">
-							<h5>Today</h5>
-							<h4>Visitors</h4>
+							<h5>YOUR EVENTS</h5>
+							<h4> NUMBER</h4>
 						</div>
+						@if (isset($eventCount))
 						<div class="stats-right">
-							<label> 80</label>
+							<label> {{ $eventCount }}</label>
 						</div>
+						@endif
+						
 						<div class="clearfix"> </div>	
 					</div>
 					

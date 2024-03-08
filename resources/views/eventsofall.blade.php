@@ -16,8 +16,10 @@
 </style>
 <div id="gallery" class="gallery">
     <div class="container">
-        <h3 class="w3ls-tittle">Events
+        <h3 class="w3ls-tittle">Events</h3>
+        <div class="container mt-4">
             <form action="{{ route('search') }}" method="GET">
+                {{-- @csrf --}}
                 <input type="text" name="title" placeholder="Search by title">
                 <select name="category_id">
                     <option value="">All Categories</option>
@@ -27,9 +29,6 @@
                 </select>
                 <button type="submit">Search</button>
             </form>
-        </h3>
-        <div class="container mt-4">
-            
             <div class="pagination-container">
                 {{ $events->links() }}
             </div>

@@ -9,14 +9,16 @@
                     
                     <div class="w3lmask">
                         <h4>
-                            {{-- @if(dd($event->accept) == 0) --}}
+                            @if($event->accept == 0)
                             {{-- {{ dd($event->accept) }} --}}
                             <form action="{{ route('admin.events.accept', $event->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Accept Event</button>
                             </form>
-                            
-                             {{-- @endif --}}
+                            @else
+                            <button type="submit" class="btn btn-success">Event Accepted</button>
+
+                             @endif
                         </h4>
                                   
 

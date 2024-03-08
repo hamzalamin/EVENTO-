@@ -10,7 +10,7 @@ class adminController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::whereNotIn('id', [1])->get();
         return view('admin.GestUsers', compact('users'));
     }
     public function getAllEvents()

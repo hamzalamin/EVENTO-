@@ -70,7 +70,11 @@
                             </x-nav-link></a>
                                 <x-nav-link :href="route('all-categories')" >
                                 {{ __('Gestion Of Categories') }}
+                            </x-nav-link>
+							<x-nav-link :href="route('gestionOfEvents')" >
+                                {{ __('Gestion Of Events') }}
                             </x-nav-link></a>
+							
                             @endrole
                 
 						</li>
@@ -93,11 +97,11 @@
 					<!-- </div> -->
 					<div class="col-md-4 widget states-mdl">
 						<div class="stats-left">
-							<h5>Today</h5>
-							<h4>Visitors</h4>
+							<h5>All</h5>
+							<h4>EVENTS</h4>
 						</div>
 						<div class="stats-right">
-							<label> 80</label>
+							<label>{{ $eventsCount }}</label>
 						</div>
 						<div class="clearfix"> </div>	
 					</div>

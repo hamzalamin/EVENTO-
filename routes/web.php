@@ -27,13 +27,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/Admin', function () {
-    return view('admin.index');
-})->middleware(['auth', 'role:Admin'])->name('Admin');
+// Route::get('/Admin', function () {
+//     return view('admin.index');
+// })->middleware(['auth', 'role:Admin'])->name('Admin');
 
-Route::get('/Organisateur', function () {
-    return view('organisateur.index');
-})->middleware(['auth', 'role:Organisateur'])->name('Organisateur');
+// Route::get('/Organisateur', function () {
+//     return view('organisateur.index');
+// })->middleware(['auth', 'role:Organisateur'])->name('Organisateur');
 
 Route::get('/User', function () {
     return view('user.index');
@@ -53,6 +53,8 @@ Route::middleware('auth', 'role:Admin')->group(function () {
     Route::get('/users/{user}', [adminController::class, 'restore']);
     Route::get('/admin/gestionOfEvents', [AdminController::class, 'getAllEvents'])->name('gestionOfEvents');
     Route::post('/admin/events/{eventId}/accept', [AdminController::class, 'acceptEvent'])->name('admin.events.accept');
+    Route::get('/Admin', [EventsController::class, 'countAllEvents'])->name('Admin');
+
 });
 
 Route::middleware('auth', 'role:Organisateur')->group(function () {
@@ -65,7 +67,7 @@ Route::middleware('auth', 'role:Organisateur')->group(function () {
     Route::post('/events/{event}', [EventsController::class, 'destroy'])->name('events.destroy');
     Route::post('/confirm-ticket/{id}', [ReservationController::class, 'confirmTicket'])->name('confirm.ticket');
     Route::get('/user-reservations', [ReservationController::class, 'userReservations'])->name('user.reservations');
-
+    Route::get('/Organisateur', [EventsController::class, 'countUserEvents'])->name('Organisateur');
 });
 
 Route::middleware('auth', 'role:User')->group(function () {

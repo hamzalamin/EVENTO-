@@ -1,4 +1,6 @@
-<x-User-layout>
+@include('BaseCopy')
+
+@include('NavBar')
 @foreach($userReservations as $reservation)
     <div style="border: 2px solid #333; border-radius: 10px; padding: 20px; margin-bottom: 20px; margin:10px;">
         <!-- Display reservation details as needed -->
@@ -19,4 +21,3 @@
         <p style="font-size: 14px; color: #666;">Thank you for reserving a ticket to our event! We look forward to seeing you there.</p>
     </div>
 @endforeach
-</x-User-layout>

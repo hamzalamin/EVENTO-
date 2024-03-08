@@ -7,6 +7,7 @@ use App\Models\categories;
 use App\Models\reservation;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
@@ -145,29 +146,40 @@ public function events(Request $request, events $event, reservation $reservation
     }
 
 
-public function search(Request $request)
+    public function search(Request $request)
     {
         $title = $request->input('title');
         $categoryId = $request->input('category_id');
-        $query = events::query();
-
+    
+        $query = events::query()->where('accept', 1); // Add condition for accept = 1
+    
         if ($title) {
-            $query->where('title', 'like', '%'.$title.'%');
+            $query->where('title', 'like', '%' . $title . '%');
         }
         if ($categoryId) {
-            $categoryId = (int)$categoryId;
-            $query->orwhere('category_id', $categoryId);
-        }else{
-            $query->get();
+            $categoryId = (int) $categoryId;
+            $query->where('category_id', $categoryId); // Use where instead of orwhere
         }
-        
+    
         $message = '';
         $categories = categories::all();
-
-        $events = events::where('accept', 1)->paginate(3);
-        return view('eventsofall', compact('events','categories', 'message'));
+        $events = $query->paginate(3);
+    
+        return view('eventsofall', compact('events', 'categories', 'message'));
     }
-
-
+    
+    public function countUserEvents()
+    {
+        $userId = Auth::id();
+        $eventCount = events::where('user_id', $userId)->count();
+    
+        return view('organisateur.index', compact('eventCount'));
+    }
+    public function countAllEvents()
+    {
+        $eventsCount = events::count();
+    
+        return view('admin.index', compact('eventsCount'));
+    }
 
 }
