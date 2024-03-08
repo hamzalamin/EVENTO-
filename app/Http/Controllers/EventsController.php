@@ -7,6 +7,7 @@ use App\Models\categories;
 use App\Models\reservation;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
@@ -126,22 +127,13 @@ class EventsController extends Controller
 
 public function events(Request $request, events $event, reservation $reservation)
     {
-        // dd($reservation);
-        // $eventId = $reservation->id;
-        // // dd($eventId);
-        // $reservationsCount = reservation::where('event_id', $eventId)->count();
-        // // dd($reservationsCount);
 
-        // if ($reservationsCount >= $event->places_available) {
-        //     $message = 'Seats are full for this event.';
-
-        // } else {
-        //     $availableSeats = $event->places_available - $reservationsCount;
-        //     $message = 'Available seats: ' . $availableSeats;
-        // }
         $message ='';
-        $events = events::where('accept', 1)->paginate(3);
-        $categories = categories::all(); 
+        $currentDateTime = Carbon::now();
+
+        $events = events::where('accept', 1)
+            ->where('date', '>', $currentDateTime)
+            ->paginate(3);        $categories = categories::all(); 
         return view('eventsofall', compact('events', 'categories', 'message'));
     }
 
@@ -160,11 +152,13 @@ public function events(Request $request, events $event, reservation $reservation
             $categoryId = (int) $categoryId;
             $query->where('category_id', $categoryId); // Use where instead of orwhere
         }
+        $currentDateTime = Carbon::now();
+
     
         $message = '';
         $categories = categories::all();
-        $events = $query->paginate(3);
-    
+        $events = $query->where('date', '>', $currentDateTime)
+        ->paginate(3);    
         return view('eventsofall', compact('events', 'categories', 'message'));
     }
     
