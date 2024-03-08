@@ -6,6 +6,8 @@ use App\Models\events;
 use App\Models\reservation as reserv;
 use App\Models\reservation;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 class ReservationController extends Controller
 {
@@ -113,5 +115,7 @@ public function tickets()
         $userReservations = Reservation::where('user_id', $userId)->get();
         return view('user.ticket', compact('userReservations'));
     }
+
+
   
 }

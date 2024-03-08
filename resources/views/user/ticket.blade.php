@@ -9,6 +9,9 @@
         <p><strong>Event:</strong> {{ $reservation->event->title }}</p>
         @if ($reservation->accept)
         <p><strong>Accepted:</strong> Yes</p>
+        <div id="qrCodeDiv" class="text-center mb-3" style="margin-right:90%">
+            {{ QrCode::size(80)->generate('USER NAME: ' . $reservation->user->name .  ' || Title: ' . $reservation->event->title .  ' || Description: ' . $reservation->event->description .  ' || Location: ' . $reservation->event->location) }}
+        </div>
         @else
         <p><strong>Accepted:</strong> Wait for confirmation</p>
         @endif
@@ -20,4 +23,5 @@
         <hr style="border-top: 2px solid #333;">
         <p style="font-size: 14px; color: #666;">Thank you for reserving a ticket to our event! We look forward to seeing you there.</p>
     </div>
+    
 @endforeach
