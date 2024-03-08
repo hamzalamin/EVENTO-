@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('places_available');
+            $table->boolean('accept')->default(false);
             $table->enum('states', ['auto', 'manuelle']);
 
             $table->timestamps();

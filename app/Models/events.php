@@ -31,6 +31,8 @@ public function reservations()
         'user_id',
         'places_available',
         'states',
+        'accept',
+
 
     ];
     

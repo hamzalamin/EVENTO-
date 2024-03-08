@@ -139,7 +139,7 @@ public function events(Request $request, events $event, reservation $reservation
         //     $message = 'Available seats: ' . $availableSeats;
         // }
         $message ='';
-        $events = events::paginate(3);
+        $events = events::where('accept', 1)->paginate(3);
         $categories = categories::all(); 
         return view('eventsofall', compact('events', 'categories', 'message'));
     }
@@ -164,7 +164,7 @@ public function search(Request $request)
         $message = '';
         $categories = categories::all();
 
-        $events = $query->paginate(3);
+        $events = events::where('accept', 1)->paginate(3);
         return view('eventsofall', compact('events','categories', 'message'));
     }
 

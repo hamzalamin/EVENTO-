@@ -51,9 +51,8 @@ Route::middleware('auth', 'role:Admin')->group(function () {
     Route::get('/users', [adminController::class, 'index'])->name('users.index');
     Route::delete('/users/{user}', [adminController::class, 'destroy'])->name('users.destroy');
     Route::get('/users/{user}', [adminController::class, 'restore']);
-
-
-
+    Route::get('/admin/gestionOfEvents', [AdminController::class, 'getAllEvents'])->name('gestionOfEvents');
+    Route::post('/admin/events/{eventId}/accept', [AdminController::class, 'acceptEvent'])->name('admin.events.accept');
 });
 
 Route::middleware('auth', 'role:Organisateur')->group(function () {

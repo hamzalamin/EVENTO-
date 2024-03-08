@@ -1,6 +1,5 @@
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <x-Admin-layout>
+{{-- @include('BaseCopy') --}}
+@include('NavBar')
         <style>
             /* Custom border style for the cards */
             .col {
@@ -24,8 +23,8 @@
                 }
             }
         </style>    
-        <a href="{{ route('Categories') }}">
-            <img src="{{ asset('helps/images/t4.png') }}" class="mx-3 mt-3" style="width: 4%" alt="">
+        <a class="mx-5" href="{{ route('Categories') }}">
+            <img src="{{ asset('helps/images/t4.png') }}" class="mx-5 mt-3" style="width: 4%;" alt="">
         </a>
         <div class="container text-center">
             <div class="row row-cols-1 row-cols-lg-3 g-2 g-lg-3">
@@ -51,4 +50,3 @@
 
         <!-- Display pagination links -->
         {{ $categorys->links() }}
-    </x-Admin-layout>

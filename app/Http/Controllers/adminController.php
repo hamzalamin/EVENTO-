@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\events;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,18 @@ class adminController extends Controller
     {
         $users = User::all();
         return view('admin.GestUsers', compact('users'));
+    }
+    public function getAllEvents()
+    {
+        $events = events::all();
+        return view('admin.GestionOfevents', compact('events'));
+    }
+    public function acceptEvent(Request $request, $eventId)
+    {
+        $event = events::findOrFail($eventId);
+        $event->accept = 1;
+        $event->save();
+        return redirect()->back()->with('success', 'Event accepted successfully.');
     }
     // forceDelete
     public function destroy(User $user)

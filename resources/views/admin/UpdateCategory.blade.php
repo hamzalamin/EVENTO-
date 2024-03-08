@@ -1,5 +1,5 @@
 {{-- @include('Base') --}}
-<x-Admin-layout>
+@include('NavBar')
     <style>
         .login-contect {
             background-color: #f8f9fa;
@@ -23,7 +23,6 @@
     
         form {
         padding: 20px; 
-        border: 2px solid #00bce4;
         border-radius: 10px;
     }
     
@@ -57,7 +56,7 @@
         }
     </style>
     
-    <!-- Your HTML code with the form -->
+<div style="margin: 2%"></div>
     <div class="login-contect py-5">
         <div class="container py-xl-5 py-3">
             <div class="login-body">
@@ -74,4 +73,3 @@
         </div>
     </div>
     
-</x-Admin-layout>
